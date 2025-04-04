@@ -15,10 +15,10 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @State private var username = "Michael Porter"
+    @State private var username = "John Doe"
     @State private var studentID = "G0012345"
     @State private var major = "Computer Science"
-    @State private var semester = "Spring 2025"
+    @State private var semester = "Fall 2023"
     @State private var darkModeEnabled = true
     @State private var notificationsEnabled = true
     
@@ -28,47 +28,72 @@ struct ProfileView: View {
                 Color.black.edgesIgnoringSafeArea(.all)
                 
                 ScrollView {
-                    VStack(spacing: 20) {
+                    VStack(spacing: 15) {
                         // Profile header
-                        VStack(spacing: 15) {
-                            Image("Image")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 140, height: 100)
-                                .foregroundColor(.orange)
-                                .clipShape(Circle())
+                        VStack(spacing: 10) {
+                            
+                            ZStack {
+                                Circle()
+                                    .fill(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [Color(hex: "FF9933").opacity(0.7), Color(hex: "FF5E62").opacity(0.7)]),
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .frame(width: 110, height: 110)
+                                    .shadow(color: Color.orange.opacity(0.4), radius: 10, x: 0, y: 5)
+                                
+                                Image("Image")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 140, height: 100)
+                                    .clipShape(Circle())
+                            }
                             
                             Text(username)
-                                .font(.title2)
-                                .fontWeight(.bold)
+                                .font(.system(size: 26, weight: .bold, design: .rounded))
                                 .foregroundColor(.white)
+                                .shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: 2)
                             
                             Text(studentID)
-                                .font(.subheadline)
+                                .font(.system(size: 16, weight: .medium, design: .monospaced))
                                 .foregroundColor(.gray)
                         }
                         .padding(.top, 20)
+                        Spacer()
                         
                         // Student information
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Student Information")
-                                .font(.headline)
-                                .foregroundColor(.white)
+                                .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                .foregroundColor(.orange)
+                                .padding(.bottom, 3)
                             
                             InfoRow(label: "Major", value: major)
                             InfoRow(label: "Semester", value: semester)
                             InfoRow(label: "Total Classes", value: "5")
-                            InfoRow(label: "GPA", value: "3.8")
+                            HStack {
+                                    Text("GPA")
+                                        .foregroundColor(.gray)
+                                    Spacer()
+                                    Text("3.8")
+                                        .foregroundColor(.orange)
+                                        .fontWeight(.bold)
+                                }
                         }
                         .padding()
-                        .background(Color.gray.opacity(0.2))
+                        .background(Color(hex: "222222"))
                         .cornerRadius(15)
+                        .shadow(color: Color.black.opacity(0.3), radius: 8, x: 0, y: 4)
+
                         
                         // Settings
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Settings")
-                                .font(.headline)
-                                .foregroundColor(.white)
+                                .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                .foregroundColor(.orange)
+                                .padding(.bottom, 3)
                             
                             Toggle(isOn: $darkModeEnabled) {
                                 HStack {
@@ -103,8 +128,10 @@ struct ProfileView: View {
                             }
                         }
                         .padding()
-                        .background(Color.gray.opacity(0.2))
+                        .background(Color(hex: "222222"))
                         .cornerRadius(15)
+                        .shadow(color: Color.black.opacity(0.3), radius: 8, x: 0, y: 4)
+
                     }
                     .padding()
                 }
@@ -130,10 +157,11 @@ struct InfoRow: View {
     var body: some View {
         HStack {
             Text(label)
-                .foregroundColor(.gray)
+                .foregroundColor(Color.gray.opacity(0.7))
+                .font(.system(size: 15))
             Spacer()
             Text(value)
-                .foregroundColor(.white)
+                .foregroundColor(Color.white.opacity(0.9))
                 .fontWeight(.medium)
         }
     }

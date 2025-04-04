@@ -89,7 +89,8 @@ struct NIView: View {
                             }) {
                                 Text(peer.displayName)
                                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                    .multilineTextAlignment(.center)
+                                    .multilineTextAlignment(.center).foregroundColor(.black)
+                                
                             }
                             .background(Color.gray)
                             .clipShape(Circle())

@@ -23,6 +23,7 @@ struct ConfirmationView: View {
                 Text("Successfully registered attendance for 9:00AM Calculus with Dr Haj")
                     .font(.title)
                     .fontWeight(.bold)
+                    .foregroundColor(.white)
                     .opacity(displayCheckmark ? 1 : 0)
                     .animation(.easeIn.delay(3.5), value: displayCheckmark)
                     .multilineTextAlignment(.center)

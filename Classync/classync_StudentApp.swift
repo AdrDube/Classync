@@ -16,8 +16,8 @@ struct classyncApp: App {
     @State private var loggedIn: Bool = false
     
     init() {
-          Notifications.initialize()
-          Notifications.sendNotification(text: "Hey there", delay: 2)
+        Notifications.initialize()
+        Notifications.sendNotification(text: "You have 20 minutes until Dr. Haj's 9 a.m. Calc I class", delay: 8)
     }
     
     var body: some Scene {

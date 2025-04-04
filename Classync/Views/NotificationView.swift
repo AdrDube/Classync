@@ -43,23 +43,26 @@ struct NotificationsView: View {
                     }
                     .padding(.horizontal)
                     .padding(.vertical, 8)
-                    .background(Color.gray.opacity(0.2))
+                    .background(Color(hex: "222222"))
                     .cornerRadius(10)
                     
                     // Notification list
-                    ScrollView {
-                        LazyVStack(spacing: 12) {
-                            ForEach(notifications.indices, id: \.self) { index in
-                                NotificationRow(notification: notifications[index])
-                                    .onTapGesture {
-                                        if !notifications[index].isRead {
-                                            markAsRead(index: index)
-                                        }
+                    List {
+                        ForEach(notifications.indices, id: \.self) { index in
+                            NotificationRow(notification: notifications[index])
+                                .onTapGesture {
+                                    if !notifications[index].isRead {
+                                        markAsRead(index: index)
                                     }
-                            }
+                                }
+                                .listRowInsets(EdgeInsets())
                         }
-                        .padding(.vertical, 5)
+                        .onDelete(perform: deleteNotification)
                     }
+                    .listStyle(.plain)
+                    .frame(maxWidth: .infinity)
+
+
                     
                     // Mark all as read button
                     if notifications.contains(where: { !$0.isRead }) {
@@ -72,7 +75,7 @@ struct NotificationsView: View {
                                 Spacer()
                             }
                             .padding(.vertical, 12)
-                            .background(Color.gray.opacity(0.2))
+                            .background(Color(hex: "#222222"))
                             .cornerRadius(10)
                         }
                         .padding(.top, 5)
@@ -118,7 +121,12 @@ struct NotificationsView: View {
             }
         }
     }
+    
+    func deleteNotification(at offsets: IndexSet) {
+        notifications.remove(atOffsets: offsets)
+    }
 }
+
 
 struct NotificationRow: View {
     let notification: Notification
@@ -166,7 +174,7 @@ struct NotificationRow: View {
             }
         }
         .padding(12)
-        .background(Color.gray.opacity(0.2))
+        .background(notification.isRead ? Color.gray.opacity(0.1) : Color.gray.opacity(0.2))
         .cornerRadius(12)
         .padding(.horizontal, 2)
         .ignoresSafeArea(edges:.bottom)
