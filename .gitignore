@@ -1,0 +1,3 @@
+# Ignore Xcode workspace UI state files
+*.xcuserstate
+
