@@ -1,10 +1,7 @@
+//  Classync
 //
-//  NotificationView.swift
-//  view_scope
+//  Created by Praise Gavi on 4/5/25.
 //
-//  Created by Shalom Donga on 3/29/25.
-//
-
 import SwiftUI
 
 struct Notification: Identifiable {
@@ -25,27 +22,27 @@ struct NotificationsView: View {
         Notification(message: "CS 201 starting in 10 minutes", isRead: true, time: "5h ago", icon: "clock.fill", relatedClass: "CS 201"),
         Notification(message: "HIST 101 starting in 5 minutes", isRead: true, time: "1d ago", icon: "clock.fill", relatedClass: "HIST 101"),
     ]
-    
+
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black.edgesIgnoringSafeArea(.all)
+                Color(.systemBackground).edgesIgnoringSafeArea(.all)
 
                 VStack(alignment: .leading, spacing: 15) {
                     // Toggle for reminders
                     HStack {
                         Image(systemName: "bell.fill")
                             .foregroundColor(.orange)
-                        
+
                         Toggle("Allow class reminders", isOn: $isReminderOn)
                             .toggleStyle(SwitchToggleStyle(tint: .orange))
-                            .foregroundColor(.white)
+                            .foregroundColor(.primary)
                     }
                     .padding(.horizontal)
                     .padding(.vertical, 8)
-                    .background(Color(hex: "222222"))
+                    .background(Color(.secondarySystemBackground))
                     .cornerRadius(10)
-                    
+
                     // Notification list
                     List {
                         ForEach(notifications.indices, id: \.self) { index in
@@ -62,8 +59,6 @@ struct NotificationsView: View {
                     .listStyle(.plain)
                     .frame(maxWidth: .infinity)
 
-
-                    
                     // Mark all as read button
                     if notifications.contains(where: { !$0.isRead }) {
                         Button(action: markAllAsRead) {
@@ -75,7 +70,7 @@ struct NotificationsView: View {
                                 Spacer()
                             }
                             .padding(.vertical, 12)
-                            .background(Color(hex: "#222222"))
+                            .background(Color(.secondarySystemBackground))
                             .cornerRadius(10)
                         }
                         .padding(.top, 5)
@@ -89,13 +84,13 @@ struct NotificationsView: View {
                 ToolbarItem(placement: .principal) {
                     Text("Notifications")
                         .font(.headline)
-                        .foregroundColor(.white)
+                        .foregroundColor(.primary)
                 }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
+
     private func markAsRead(index: Int) {
         withAnimation {
             notifications[index] = Notification(
@@ -107,7 +102,7 @@ struct NotificationsView: View {
             )
         }
     }
-    
+
     private func markAllAsRead() {
         withAnimation {
             notifications = notifications.map { notification in
@@ -121,32 +116,29 @@ struct NotificationsView: View {
             }
         }
     }
-    
+
     func deleteNotification(at offsets: IndexSet) {
         notifications.remove(atOffsets: offsets)
     }
 }
 
-
 struct NotificationRow: View {
     let notification: Notification
-    
+
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
-            // Icon
             if let icon = notification.icon {
                 ZStack {
                     Circle()
                         .fill(Color.orange.opacity(notification.isRead ? 0.3 : 0.7))
                         .frame(width: 36, height: 36)
-                    
+
                     Image(systemName: icon)
                         .foregroundColor(notification.isRead ? .gray : .white)
                         .font(.system(size: 16))
                 }
             }
-            
-            // Content
+
             VStack(alignment: .leading, spacing: 4) {
                 if let relatedClass = notification.relatedClass {
                     Text(relatedClass)
@@ -154,19 +146,18 @@ struct NotificationRow: View {
                         .foregroundColor(notification.isRead ? .gray : .orange)
                         .fontWeight(.semibold)
                 }
-                
+
                 Text(notification.message)
-                    .foregroundColor(notification.isRead ? .gray : .white)
+                    .foregroundColor(notification.isRead ? .gray : .primary)
                     .lineLimit(2)
-                
+
                 Text(notification.time)
                     .font(.caption)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.secondary)
             }
-            
+
             Spacer()
-            
-            // Unread indicator
+
             if !notification.isRead {
                 Circle()
                     .fill(Color.orange)
@@ -174,10 +165,10 @@ struct NotificationRow: View {
             }
         }
         .padding(12)
-        .background(notification.isRead ? Color.gray.opacity(0.1) : Color.gray.opacity(0.2))
+        .background(notification.isRead ? Color(.systemGray6) : Color(.systemGray5))
         .cornerRadius(12)
         .padding(.horizontal, 2)
-        .ignoresSafeArea(edges:.bottom)
+        .ignoresSafeArea(edges: .bottom)
     }
 }
 
