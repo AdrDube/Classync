@@ -1,18 +1,11 @@
-//
-//  TabView.swift
-//  view_scope
-//
-//  Created by Shalom Donga on 3/29/25.
-//
-
 import SwiftUI
 
 struct MainTabView: View {
     @ObservedObject var sessionManager: SessionManager
-    
+    @Binding var loggedIn: Bool
+
     var body: some View {
         TabView {
-            // Wrap each main view in its own NavigationStack
             NavigationStack {
                 HomeView(sessionManager: sessionManager, classTitle: "Calculus 101")
             }
@@ -20,7 +13,7 @@ struct MainTabView: View {
                 Image(systemName: "house.fill")
                 Text("Home")
             }
-            
+
             NavigationStack {
                 HistoryView()
             }
@@ -28,7 +21,7 @@ struct MainTabView: View {
                 Image(systemName: "clock.fill")
                 Text("History")
             }
-            
+
             NavigationStack {
                 NotificationsView()
             }
@@ -36,17 +29,15 @@ struct MainTabView: View {
                 Image(systemName: "bell.fill")
                 Text("Notifications")
             }
-            
+
             NavigationStack {
-                ProfileView()
+                ProfileView(loggedIn: $loggedIn) // ✅ passing loggedIn binding
             }
             .tabItem {
                 Image(systemName: "person.fill")
                 Text("Profile")
             }
         }
-        .accentColor(.orange) // Highlight color for selected tab
-        .background(.black)
+        .accentColor(.orange)
     }
 }
-

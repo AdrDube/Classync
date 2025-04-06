@@ -1,3 +1,7 @@
+//  Classync
+//
+//  Created by Praise Gavi on 4/5/25.
+//
 import SwiftUI
 import Charts
 
@@ -21,26 +25,24 @@ struct HistoryView: View {
     
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
+            Color(.systemBackground).edgesIgnoringSafeArea(.all)
             
             ScrollView {
                 VStack(spacing: 15) {
-                    // Summary bar chart
                     VStack(alignment: .leading) {
                         Text("Attendance Summary")
                             .font(.headline)
-                            .foregroundColor(.white)
+                            .foregroundColor(.primary)
                             .padding(.horizontal)
                         
                         AttendanceBarChart(classes: classes)
                             .frame(height: 120)
-                            .background(Color(hex: "#222222"))
+                            .background(Color(.secondarySystemBackground))
                             .cornerRadius(12)
                             .shadow(color: .orange.opacity(0.1), radius: 5, x: 0, y: 2)
                             .padding(.horizontal)
                     }
                     
-                    // Class list
                     VStack(spacing: 12) {
                         ForEach(classes.indices, id: \.self) { index in
                             ClassCardView(classItem: $classes[index])
@@ -57,7 +59,7 @@ struct HistoryView: View {
             ToolbarItem(placement: .principal) {
                 Text("Attendance History")
                     .font(.headline)
-                    .foregroundColor(.white)
+                    .foregroundColor(.primary)
             }
         }
     }
@@ -66,10 +68,9 @@ struct HistoryView: View {
 struct ClassCardView: View {
     @Binding var classItem: ClassAttendance
     @Namespace private var animation
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            // Class header button
             Button(action: {
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
                     classItem.isExpanded.toggle()
@@ -79,61 +80,54 @@ struct ClassCardView: View {
                     VStack(alignment: .leading) {
                         Text(classItem.courseName)
                             .font(.headline)
-                            .foregroundColor(.white)
+                            .foregroundColor(.primary)
                         Text("Instructor: \(classItem.instructor)")
                             .font(.subheadline)
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                     }
                     Spacer()
                     Image(systemName: classItem.isExpanded ? "chevron.down" : "chevron.right")
                         .foregroundColor(.orange)
-                        .rotationEffect(classItem.isExpanded ? .degrees(0) : .degrees(0))
-                        .animation(.spring(response: 0.3, dampingFraction: 0.8), value: classItem.isExpanded)
                 }
                 .padding(.vertical, 14)
                 .padding(.horizontal, 16)
-                .background(Color(hex: "#222222"))
+                .background(Color(.secondarySystemBackground))
                 .cornerRadius(10)
-                .shadow(color: .black.opacity(0.3), radius: 3, x: 0, y: 2)
+                .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 2)
             }
             .buttonStyle(PlainButtonStyle())
             
-            // Expandable content
             if classItem.isExpanded {
                 VStack(alignment: .leading, spacing: 10) {
                     HStack {
                         Text("Total Classes:")
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                         Spacer()
                         Text("\(classItem.totalClasses)")
-                            .foregroundColor(.white)
+                            .foregroundColor(.primary)
                     }
-                    
                     HStack {
                         Text("Attended:")
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                         Spacer()
                         Text("\(classItem.attended)")
                             .foregroundColor(.attendedColor)
                     }
-                    
                     HStack {
                         Text("Missed:")
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                         Spacer()
                         Text("\(classItem.missed)")
                             .foregroundColor(.absentColor)
                     }
-                    
                     HStack {
                         Text("Tardies:")
-                            .foregroundColor(.gray)
+                            .foregroundColor(.secondary)
                         Spacer()
                         Text("\(classItem.tardies)")
                             .foregroundColor(.lateColor)
                     }
                     
-                    // Attendance bar for this class
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Attendance Rate")
                             .foregroundColor(.orange)
@@ -148,16 +142,13 @@ struct ClassCardView: View {
                                 RoundedRectangle(cornerRadius: 2)
                                     .fill(Color.attendedColor)
                                     .frame(width: attendedWidth)
-                                
                                 RoundedRectangle(cornerRadius: 2)
                                     .fill(Color.lateColor)
                                     .frame(width: tardiesWidth)
-                                
                                 RoundedRectangle(cornerRadius: 2)
                                     .fill(Color.absentColor)
                                     .frame(width: missedWidth)
                             }
-                            .frame(height: 10)
                         }
                         .frame(height: 10)
                     }
@@ -165,24 +156,23 @@ struct ClassCardView: View {
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 14)
-                .background(Color(hex: "#1A1A1A"))
+                .background(Color(.tertiarySystemBackground))
                 .cornerRadius(8)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.orange.opacity(0.1), lineWidth: 1)
                 )
-                .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 2)
+                .shadow(color: .black.opacity(0.1), radius: 3, x: 0, y: 2)
                 .padding(.top, 2)
                 .transition(.asymmetric(
-                    insertion: .scale(scale: 0.95).combined(with: .opacity).animation(.spring(response: 0.3, dampingFraction: 0.8)),
-                    removal: .scale(scale: 0.95).combined(with: .opacity).animation(.spring(response: 0.25, dampingFraction: 0.8))
+                    insertion: .scale(scale: 0.95).combined(with: .opacity),
+                    removal: .scale(scale: 0.95).combined(with: .opacity)
                 ))
             }
         }
     }
 }
 
-// MARK: - Attendance Bar Chart
 struct AttendanceBarChart: View {
     let classes: [ClassAttendance]
     
@@ -194,13 +184,11 @@ struct AttendanceBarChart: View {
     }
     
     var body: some View {
-        // Calculate totals
         let totalClasses = classes.reduce(0) { $0 + $1.totalClasses }
         let totalAttended = classes.reduce(0) { $0 + $1.attended }
         let totalMissed = classes.reduce(0) { $0 + $1.missed }
         let totalTardies = classes.reduce(0) { $0 + $1.tardies }
         
-        // Create data for the segments
         let segments = [
             AttendanceSegment(status: "On Time", count: totalAttended, color: .attendedColor),
             AttendanceSegment(status: "Late", count: totalTardies, color: .lateColor),
@@ -208,7 +196,6 @@ struct AttendanceBarChart: View {
         ]
         
         VStack(alignment: .leading, spacing: 15) {
-            // Percentages text
             HStack {
                 ForEach(segments) { segment in
                     HStack(spacing: 4) {
@@ -218,7 +205,7 @@ struct AttendanceBarChart: View {
                         
                         Text("\(segment.status): \(Int((Double(segment.count) / Double(totalClasses)) * 100))%")
                             .font(.caption)
-                            .foregroundColor(.white)
+                            .foregroundColor(.primary)
                     }
                     
                     if segment.id != segments.last?.id {
@@ -227,10 +214,8 @@ struct AttendanceBarChart: View {
                 }
             }
             
-            // Custom segmented bar
             GeometryReader { geometry in
                 HStack(spacing: 0) {
-                    // On Time segment
                     let attendedWidth = CGFloat(totalAttended) / CGFloat(totalClasses) * geometry.size.width
                     let tardiesWidth = CGFloat(totalTardies) / CGFloat(totalClasses) * geometry.size.width
                     let missedWidth = CGFloat(totalMissed) / CGFloat(totalClasses) * geometry.size.width
@@ -238,25 +223,22 @@ struct AttendanceBarChart: View {
                     RoundedRectangle(cornerRadius: 0)
                         .fill(Color.attendedColor)
                         .frame(width: attendedWidth)
-                    
                     RoundedRectangle(cornerRadius: 0)
                         .fill(Color.lateColor)
                         .frame(width: tardiesWidth)
-                    
                     RoundedRectangle(cornerRadius: 0)
                         .fill(Color.absentColor)
                         .frame(width: missedWidth)
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .frame(height: 20)
-                .shadow(color: .black.opacity(0.3), radius: 2, x: 0, y: 1)
+                .shadow(color: .black.opacity(0.2), radius: 2, x: 0, y: 1)
             }
             .frame(height: 20)
             
-            // Legend text
             Text("Total Classes: \(totalClasses)")
                 .font(.caption)
-                .foregroundColor(.gray)
+                .foregroundColor(.secondary)
         }
         .padding()
     }
