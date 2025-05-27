@@ -43,14 +43,8 @@
 ---
 ### Promo
 
-<div align="center">
-  <a href="https://drive.google.com/file/d/1SrZVmEqOnvEH3af8J0s7yjYr2p57tWI1/view?usp=share_link">
-    <img 
-      src="https://s14.gifyu.com/images/bxp4D.gif" 
-      height="400" 
-      alt="Classync Promo">
-  </a>
-</div>
+[![bxp4D.gif](https://s14.gifyu.com/images/bxp4D.gif)](https://drive.google.com/file/d/1SrZVmEqOnvEH3af8J0s7yjYr2p57tWI1/view?usp=share_link)
+
 
 ### Built With
 
