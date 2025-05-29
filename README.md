@@ -43,8 +43,11 @@
 ---
 ### Promo
 
-[![bxp4D.gif](https://s14.gifyu.com/images/bxp4D.gif)](https://drive.google.com/file/d/1SrZVmEqOnvEH3af8J0s7yjYr2p57tWI1/view?usp=share_link)
-
+<div align="center">
+  <a href="https://drive.google.com/file/d/1SrZVmEqOnvEH3af8J0s7yjYr2p57tWI1/view?usp=share_link">
+    <img src="https://github.com/AdrDube/Classync/blob/main/Classync/Promo.gif" alt="Promo" width="450" height="300">
+  </a>
+</div>
 
 ### Built With
 
