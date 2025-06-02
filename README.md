@@ -75,14 +75,15 @@ Traditional attendance methods (roll call, sign-in sheets, or scanning IDs) are:
       alt="Classync Demo">
   </a>
 </div>
-
-ClassSync transforms the attendance process through:
+ClassSync is a privacy-first, SwiftUI-based iOS application that automates and simplifies classroom attendance.
 
 * 📍 **Proximity Detection via Nearby Interaction** – Automatically marks present when students are within range.
 * 🔐 **Secure Auth via Firebase & FaceID** – Ensures the right student is always accounted for.
 * 📊 **Live Student Dashboards** – Real-time visibility into attendance stats.
 * 🎨 **Elegant, Accessible UI** – Built with SwiftUI for fluid and accessible design.
 * 📱 **iOS Native** – Uses Apple ecosystem tools for performance and security.
+
+ ClassSync is designed with MVVM architecture and built for real-world use. It is currently being implemented at Grambling State University.
 
 ## Technologies Used
 
