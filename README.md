@@ -34,6 +34,7 @@
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#team">Team</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -75,6 +76,7 @@ Traditional attendance methods (roll call, sign-in sheets, or scanning IDs) are:
       alt="Classync Demo">
   </a>
 </div>
+
 ClassSync is a privacy-first, SwiftUI-based iOS application that automates and simplifies classroom attendance.
 
 * 📍 **Proximity Detection via Nearby Interaction** – Automatically marks present when students are within range.
@@ -125,9 +127,57 @@ Want to enhance ClassSync or pilot it at your institution?
 * Push to the branch (`git push origin feature/YourFeature`)
 * Open a Pull Request
 
+## Team
+
+ClassSync is developed by a collaborative team of students passionate about improving educational technology:
+
+### Core Development Team
+
+**Adriel Dube** - *Lead Developer & Integrator*
+- Geofencing, Data Models, iOS Architecture Integration
+- [GitHub](https://github.com/AdrDube) • [LinkedIn](https://www.linkedin.com/in/adrieltdube/) • [Portfolio](https://adrdube.github.io/)
+
+**Shalom Donga** - *Lead UI/UX Developer*
+- Main Dashboard and Views Implementation, User Interface Design
+- [GitHub](https://github.com/ShalomDee) • [LinkedIn](https://www.linkedin.com/in/shalom-donga/)
+
+**Chinyemba Kalenga** - *Data Architect*
+- Data Models, Product Strategy & Team Coordination
+- [GitHub](https://github.com/Chinyemba-ck) • [LinkedIn](https://www.linkedin.com/in/chinyemba-kalenga/)
+
+**Shadrack Boakye** - *UI/UX Developer*
+- User Interface Components and Design Implementation
+- [GitHub](https://github.com/shark121) • [LinkedIn](https://www.linkedin.com/in/shadrack-boakye/)
+
+**Njabulo Moyo** - *Authentication Systems*
+- Firebase Authentication and User Management
+- [GitHub](https://github.com/njabulomoyo) • [LinkedIn](https://www.linkedin.com/in/njabulo-moyo/)
+
+**Iminabo Roberts** - *Notifications Developer*
+- Push Notifications System and User Alerts
+- [GitHub](https://github.com/IMINABO1) • [LinkedIn](https://www.linkedin.com/in/iminabo-roberts/)
+
+**Praise Gavi** - *QR Code Integration*
+- QR Code Scanning and Generation Features
+- [GitHub](https://github.com/Praisg) • [LinkedIn](https://www.linkedin.com/in/praisegavi/)
+
+### Media & Marketing Team
+
+**Francis Gyamfi** - *Video Production Lead*
+- Commercial Video Content Creation
+- [LinkedIn](https://www.linkedin.com/in/francisot/)
+
+**Tinenyasha Sibanda** - *Video Production*
+- Prototype Demo Walkthrough and Voice Overs
+- [LinkedIn](https://www.linkedin.com/in/tinenyasha-sibanda-09a31031b/)
+
+**Elikem Hamenoo** - *Media Production*
+- Marketing Content and Visual Assets
+- [LinkedIn](https://www.linkedin.com/in/elikemhamenoo/)
+
 ## Contact
 
-### Adriel Dube
+### Project Maintainer
 
 <div align="left">
   <a href="mailto:adrtdube@gmail.com" target="_blank">
@@ -141,6 +191,8 @@ Want to enhance ClassSync or pilot it at your institution?
   </a>
 </div>
 
+**Project Link:** [https://github.com/adrdube/Classync](https://github.com/adrdube/Classync)
+
 ## License
 
 Distributed under the Unlicense. See `LICENSE` for more information.
@@ -153,6 +205,7 @@ Distributed under the Unlicense. See `LICENSE` for more information.
 * [Firebase Docs](https://firebase.google.com/docs)
 * [Nearby Interaction](https://developer.apple.com/documentation/nearbyinteraction/)
 * [Hacking with Swift](https://www.hackingwithswift.com/)
+* Grambling State University for pilot testing opportunity
 
 <!-- Badge Links -->
 
