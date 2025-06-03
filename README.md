@@ -135,31 +135,32 @@ ClassSync is developed by a collaborative team of students passionate about impr
 
 **Adriel Dube** - *Lead Developer & Integrator*
 - Geofencing, Data Models, iOS Architecture Integration
-- [GitHub](https://github.com/AdrDube) • [LinkedIn](https://www.linkedin.com/in/adrieltdube/) • [Portfolio](https://adrdube.github.io/)
+- [GitHub](https://github.com/AdrDube) | [LinkedIn](https://www.linkedin.com/in/adrieltdube/) | [Portfolio](https://adrdube.github.io/)
 
 **Shalom Donga** - *Lead UI/UX Developer*
 - Main Dashboard and Views Implementation, User Interface Design
-- [GitHub](https://github.com/ShalomDee) • [LinkedIn](https://www.linkedin.com/in/shalom-donga/)
+- [GitHub](https://github.com/ShalomDee) | [LinkedIn](https://www.linkedin.com/in/shalom-donga/)
 
 **Chinyemba Kalenga** - *Data Architect*
 - Data Models, Product Strategy & Team Coordination
-- [GitHub](https://github.com/Chinyemba-ck) • [LinkedIn](https://www.linkedin.com/in/chinyemba-kalenga/)
+- [GitHub](https://github.com/Chinyemba-ck) | [LinkedIn](https://www.linkedin.com/in/chinyemba-kalenga/)
 
 **Shadrack Boakye** - *UI/UX Developer*
 - User Interface Components and Design Implementation
-- [GitHub](https://github.com/shark121) • [LinkedIn](https://www.linkedin.com/in/shadrack-boakye/)
+- [GitHub](https://github.com/shark121) | [LinkedIn](https://www.linkedin.com/in/shadrack-boakye/)
 
 **Njabulo Moyo** - *Authentication Systems*
 - Firebase Authentication and User Management
-- [GitHub](https://github.com/njabulomoyo) • [LinkedIn](https://www.linkedin.com/in/njabulo-moyo/)
+- [GitHub](https://github.com/njabulomoyo) | [LinkedIn](https://www.linkedin.com/in/njabulo-moyo/)
 
 **Iminabo Roberts** - *Notifications Developer*
 - Push Notifications System and User Alerts
-- [GitHub](https://github.com/IMINABO1) • [LinkedIn](https://www.linkedin.com/in/iminabo-roberts/)
+- [GitHub](https://github.com/IMINABO1) | [LinkedIn](https://www.linkedin.com/in/iminabo-roberts/)
 
 **Praise Gavi** - *QR Code Integration*
 - QR Code Scanning and Generation Features
-- [GitHub](https://github.com/Praisg) • [LinkedIn](https://www.linkedin.com/in/praisegavi/)
+- [GitHub](https://github.com/Praisg) | [LinkedIn](https://www.linkedin.com/in/praisegavi/)
+
 
 ### Media & Marketing Team
 
@@ -177,7 +178,7 @@ ClassSync is developed by a collaborative team of students passionate about impr
 
 ## Contact
 
-### Project Maintainer
+### Project Maintainer: Adriel Dube
 
 <div align="left">
   <a href="mailto:adrtdube@gmail.com" target="_blank">
